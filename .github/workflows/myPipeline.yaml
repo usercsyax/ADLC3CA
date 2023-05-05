@@ -10,10 +10,10 @@ jobs:
           - name: Checkout Source
             uses: actions/checkout@v3 
 
-          # - name: Deploy railway
-          #   run: railway up
-          #   env:
-          #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          - name: Deploy railway
+            run: railway up
+            env:
+              RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
           - name: Send notification to Slack
             id: slack
