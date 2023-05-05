@@ -14,7 +14,7 @@ jobs:
             uses: bervProject/railway-deploy@main
             with:
               railway_token: ${{ secrets.RAILWAY_TOKEN }}
-              service: "${{ var.MY_SERVICE }}"
+              service: "${{ vars.MY_SERVICE }}"
 
           - name: Send notification to Slack
             id: slack
