@@ -56,7 +56,7 @@ jobs:
                         "type": "mrkdwn",
                         "text": "${{ secrets.RAILWAYURL }}"
                       },
-                      "accessory": {
+                      "actions": {
                         "type": "button",
                         "text": {
                           "type": "plain_text",
