@@ -1,0 +1,73 @@
+name: ADLC3_CA
+on: 
+    push
+
+jobs: 
+    ADLC3_CA:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout Source
+            uses: actions/checkout@v3 
+
+          # - name: Deploy railway
+          #   run: railway up
+          #   env:
+          #     RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+          - name: Send notification to Slack
+            id: slack
+            uses: slackapi/slack-github-action@v1.23.0
+            with:            
+              payload: |
+                {
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "DipSA 56 CI/CD Submission"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Name:* ${{ secrets.MY_NAME }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Email:* ${{ secrets.EMAIL }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Matriculation:* ${{ secrets.MY_MATRICULATION }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Repository:* ${{ github.server_url }}/${{ github.repository }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "${{ secrets.RAILWAYURL }}"
+                      },
+                      "accessory": {
+                        "type": "button",
+                        "text": {
+                          "type": "plain_text",
+                          "emoji": true,
+                          "text": "Go"
+                        },
+                        "value": "${{ secrets.RAILWAYURL }}"
+                      }
+                    }
+                  ]
+                }
+            env:
+              SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+              SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
