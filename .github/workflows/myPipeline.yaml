@@ -56,7 +56,7 @@ jobs:
                         "type": "mrkdwn",
                         "text": "${{ secrets.RAILWAYURL }}"
                       },
-                      "actions": {
+                      "accessory": {
                         "type": "button",
                         "text": {
                           "type": "plain_text",
@@ -64,6 +64,8 @@ jobs:
                           "text": "Go"
                         },
                         "value": "${{ secrets.RAILWAYURL }}"
+                        "url": "${{ secrets.RAILWAYURL }}",
+				                "action_id": "button-action"
                       }
                     }
                   ]
