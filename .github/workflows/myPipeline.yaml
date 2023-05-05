@@ -63,7 +63,7 @@ jobs:
                           "text": "Go",
                           "emoji": true
                         },
-                        "value": "click_me_123",
+                        
                         "url": "${{ secrets.RAILWAYURL }}",
                         "action_id": "button-action"
                       }
